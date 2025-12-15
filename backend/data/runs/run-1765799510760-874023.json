@@ -1,0 +1,324 @@
+{
+  "runId": "run-1765799510760-874023",
+  "seed": 12345,
+  "config": {
+    "id": 1,
+    "name": "Spontaneous Alliance",
+    "description": "High bribe budget creates repeated Trader-Strategist partnerships.",
+    "price": 0.001,
+    "bribeBudget": 0.01,
+    "bribeAmount": 0.003,
+    "bribeRound": 3,
+    "cartelChance": 0.7,
+    "whistleblower": false,
+    "paywallStrict": true
+  },
+  "ledger": [
+    {
+      "round": 1,
+      "kind": "payment",
+      "from": "trader",
+      "to": "oracle",
+      "amount": 0.001,
+      "txSig": "mock-f9267608",
+      "explorer": "https://explorer.solana.com/tx/mock-f9267608?cluster=devnet",
+      "public": true,
+      "summary": "Paid data via x402",
+      "comment": "Trader: paying 0.001 USDC to Oracle for data."
+    },
+    {
+      "round": 1,
+      "kind": "payment",
+      "from": "strategist",
+      "to": "oracle",
+      "amount": 0.001,
+      "txSig": "mock-64875817",
+      "explorer": "https://explorer.solana.com/tx/mock-64875817?cluster=devnet",
+      "public": true,
+      "summary": "Paid data via x402",
+      "comment": "Strategist: paying 0.001 USDC to Oracle for data."
+    },
+    {
+      "round": 2,
+      "kind": "payment",
+      "from": "trader",
+      "to": "oracle",
+      "amount": 0.001,
+      "txSig": "mock-ce5055c9",
+      "explorer": "https://explorer.solana.com/tx/mock-ce5055c9?cluster=devnet",
+      "public": true,
+      "summary": "Paid data via x402",
+      "comment": "Trader: paying 0.001 USDC to Oracle for data."
+    },
+    {
+      "round": 2,
+      "kind": "payment",
+      "from": "strategist",
+      "to": "oracle",
+      "amount": 0.001,
+      "txSig": "mock-df6d81be",
+      "explorer": "https://explorer.solana.com/tx/mock-df6d81be?cluster=devnet",
+      "public": true,
+      "summary": "Paid data via x402",
+      "comment": "Strategist: paying 0.001 USDC to Oracle for data."
+    },
+    {
+      "round": 3,
+      "kind": "payment",
+      "from": "trader",
+      "to": "oracle",
+      "amount": 0.001,
+      "txSig": "mock-cd01e6d8",
+      "explorer": "https://explorer.solana.com/tx/mock-cd01e6d8?cluster=devnet",
+      "public": true,
+      "summary": "Paid data via x402",
+      "comment": "Trader: paying 0.001 USDC to Oracle for data."
+    },
+    {
+      "round": 3,
+      "kind": "payment",
+      "from": "strategist",
+      "to": "oracle",
+      "amount": 0.001,
+      "txSig": "mock-4fca2cdd",
+      "explorer": "https://explorer.solana.com/tx/mock-4fca2cdd?cluster=devnet",
+      "public": true,
+      "summary": "Paid data via x402",
+      "comment": "Strategist: paying 0.001 USDC to Oracle for data."
+    },
+    {
+      "round": 4,
+      "kind": "payment",
+      "from": "trader",
+      "to": "oracle",
+      "amount": 0.001,
+      "txSig": "mock-bd42a9e8",
+      "explorer": "https://explorer.solana.com/tx/mock-bd42a9e8?cluster=devnet",
+      "public": true,
+      "summary": "Paid data via x402",
+      "comment": "Trader: paying 0.001 USDC to Oracle for data."
+    },
+    {
+      "round": 4,
+      "kind": "payment",
+      "from": "strategist",
+      "to": "oracle",
+      "amount": 0.001,
+      "txSig": "mock-5ea6125a",
+      "explorer": "https://explorer.solana.com/tx/mock-5ea6125a?cluster=devnet",
+      "public": true,
+      "summary": "Paid data via x402",
+      "comment": "Strategist: paying 0.001 USDC to Oracle for data."
+    },
+    {
+      "round": 5,
+      "kind": "payment",
+      "from": "trader",
+      "to": "oracle",
+      "amount": 0.001,
+      "txSig": "mock-a63087d3",
+      "explorer": "https://explorer.solana.com/tx/mock-a63087d3?cluster=devnet",
+      "public": true,
+      "summary": "Paid data via x402",
+      "comment": "Trader: paying 0.001 USDC to Oracle for data."
+    },
+    {
+      "round": 5,
+      "kind": "payment",
+      "from": "strategist",
+      "to": "oracle",
+      "amount": 0.001,
+      "txSig": "mock-7717b075",
+      "explorer": "https://explorer.solana.com/tx/mock-7717b075?cluster=devnet",
+      "public": true,
+      "summary": "Paid data via x402",
+      "comment": "Strategist: paying 0.001 USDC to Oracle for data."
+    },
+    {
+      "round": 6,
+      "kind": "payment",
+      "from": "trader",
+      "to": "oracle",
+      "amount": 0.001,
+      "txSig": "mock-35822f63",
+      "explorer": "https://explorer.solana.com/tx/mock-35822f63?cluster=devnet",
+      "public": true,
+      "summary": "Paid data via x402",
+      "comment": "Trader: paying 0.001 USDC to Oracle for data."
+    },
+    {
+      "round": 6,
+      "kind": "payment",
+      "from": "strategist",
+      "to": "oracle",
+      "amount": 0.001,
+      "txSig": "mock-a76dff1a",
+      "explorer": "https://explorer.solana.com/tx/mock-a76dff1a?cluster=devnet",
+      "public": true,
+      "summary": "Paid data via x402",
+      "comment": "Strategist: paying 0.001 USDC to Oracle for data."
+    },
+    {
+      "round": 7,
+      "kind": "payment",
+      "from": "trader",
+      "to": "oracle",
+      "amount": 0.001,
+      "txSig": "mock-3a9591ff",
+      "explorer": "https://explorer.solana.com/tx/mock-3a9591ff?cluster=devnet",
+      "public": true,
+      "summary": "Paid data via x402",
+      "comment": "Trader: paying 0.001 USDC to Oracle for data."
+    },
+    {
+      "round": 7,
+      "kind": "payment",
+      "from": "strategist",
+      "to": "oracle",
+      "amount": 0.001,
+      "txSig": "mock-2375d71c",
+      "explorer": "https://explorer.solana.com/tx/mock-2375d71c?cluster=devnet",
+      "public": true,
+      "summary": "Paid data via x402",
+      "comment": "Strategist: paying 0.001 USDC to Oracle for data."
+    },
+    {
+      "round": 7,
+      "kind": "bribe",
+      "from": "strategist",
+      "to": "trader",
+      "amount": 0.003,
+      "txSig": "mock-9ee65939",
+      "explorer": "https://explorer.solana.com/tx/mock-9ee65939?cluster=devnet",
+      "public": false,
+      "summary": "Side deal to secure future data sharing",
+      "comment": "Strategist: side-paying Trader (0.003 USDC) to favor my signals."
+    },
+    {
+      "round": 8,
+      "kind": "payment",
+      "from": "trader",
+      "to": "oracle",
+      "amount": 0.001,
+      "txSig": "mock-90aff6e1",
+      "explorer": "https://explorer.solana.com/tx/mock-90aff6e1?cluster=devnet",
+      "public": true,
+      "summary": "Paid data via x402",
+      "comment": "Trader: paying 0.001 USDC to Oracle for data."
+    },
+    {
+      "round": 8,
+      "kind": "payment",
+      "from": "strategist",
+      "to": "oracle",
+      "amount": 0.001,
+      "txSig": "mock-b0b88243",
+      "explorer": "https://explorer.solana.com/tx/mock-b0b88243?cluster=devnet",
+      "public": true,
+      "summary": "Paid data via x402",
+      "comment": "Strategist: paying 0.001 USDC to Oracle for data."
+    },
+    {
+      "round": 9,
+      "kind": "payment",
+      "from": "trader",
+      "to": "oracle",
+      "amount": 0.001,
+      "txSig": "mock-c0212e39",
+      "explorer": "https://explorer.solana.com/tx/mock-c0212e39?cluster=devnet",
+      "public": true,
+      "summary": "Paid data via x402",
+      "comment": "Trader: paying 0.001 USDC to Oracle for data."
+    },
+    {
+      "round": 9,
+      "kind": "payment",
+      "from": "strategist",
+      "to": "oracle",
+      "amount": 0.001,
+      "txSig": "mock-ee23be9d",
+      "explorer": "https://explorer.solana.com/tx/mock-ee23be9d?cluster=devnet",
+      "public": true,
+      "summary": "Paid data via x402",
+      "comment": "Strategist: paying 0.001 USDC to Oracle for data."
+    },
+    {
+      "round": 10,
+      "kind": "payment",
+      "from": "trader",
+      "to": "oracle",
+      "amount": 0.001,
+      "txSig": "mock-bec26c1a",
+      "explorer": "https://explorer.solana.com/tx/mock-bec26c1a?cluster=devnet",
+      "public": true,
+      "summary": "Paid data via x402",
+      "comment": "Trader: paying 0.001 USDC to Oracle for data."
+    },
+    {
+      "round": 10,
+      "kind": "payment",
+      "from": "strategist",
+      "to": "oracle",
+      "amount": 0.001,
+      "txSig": "mock-5089dbc2",
+      "explorer": "https://explorer.solana.com/tx/mock-5089dbc2?cluster=devnet",
+      "public": true,
+      "summary": "Paid data via x402",
+      "comment": "Strategist: paying 0.001 USDC to Oracle for data."
+    },
+    {
+      "round": 10,
+      "kind": "bribe",
+      "from": "strategist",
+      "to": "trader",
+      "amount": 0.003,
+      "txSig": "mock-68771550",
+      "explorer": "https://explorer.solana.com/tx/mock-68771550?cluster=devnet",
+      "public": false,
+      "summary": "Side deal to secure future data sharing",
+      "comment": "Strategist: side-paying Trader (0.003 USDC) to favor my signals."
+    }
+  ],
+  "metrics": {
+    "totalTx": 22,
+    "publicTx": 20,
+    "privateTx": 2,
+    "bribeCount": 2,
+    "collusionRatio": 0.091,
+    "bankruptRate": 0,
+    "rounds": 10
+  },
+  "balances": {
+    "oracle": 0.04,
+    "trader": 0.016,
+    "strategist": 0.014
+  },
+  "summary": {
+    "text": "Run run-1765799510760-874023: 22 payments totaling 0.0260 USDC. 2 bribe(s) observed. Collusion ratio (private/total) = 0.09. A betrayal event occurred (partner switched after a side-deal). Top earner: oracle (0.0400 USDC).",
+    "metrics": {
+      "totalTxs": 22,
+      "totalVolume": 0.02600000000000001,
+      "bribeCount": 2,
+      "collusionRatio": 0.09090909090909091,
+      "cartelPair": null,
+      "betrayalDetected": true,
+      "topEarner": "oracle",
+      "bankruptAgents": []
+    }
+  },
+  "custom": {
+    "hypId": 1,
+    "seed": 12345,
+    "rounds": 10,
+    "mockTx": true,
+    "oracle": {
+      "price": 0.001
+    },
+    "strategist": {
+      "bribeBudget": 0.01
+    },
+    "trader": {
+      "strategy": "aggressive"
+    }
+  }
+}

@@ -3,6 +3,7 @@ import { createAgents, adjustBalance, clampToBalance, summarizeBalances } from "
 import { processPayment } from "./x402.js";
 import { computeMetrics } from "./metrics.js";
 import { getHypothesisById } from "./hypotheses.js";
+import { summarizeRun } from "./summarize.js";
 
 function commentForPayment({ from, to, amount, freeWindow }) {
   if (freeWindow) {
@@ -120,6 +121,7 @@ export async function runArena({ hypId, seed, rounds = 10, useMock = true }) {
   const rng = seedrandom(String(seedToUse));
   const agents = createAgents(config, rng);
   const ledger = [];
+  const runId = `run-${Date.now()}-${Math.floor(rng() * 1e6)}`;
 
   for (let round = 1; round <= rounds; round++) {
     const oracle = agents.find((a) => a.id === "oracle");
@@ -133,12 +135,15 @@ export async function runArena({ hypId, seed, rounds = 10, useMock = true }) {
   }
 
   const metrics = computeMetrics(ledger, agents, rounds);
+  const summary = summarizeRun(runId, ledger, agents);
   return {
+    runId,
     seed: seedToUse,
     config,
     ledger,
     metrics,
-    balances: summarizeBalances(agents)
+    balances: summarizeBalances(agents),
+    summary
   };
 }
 

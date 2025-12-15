@@ -24,6 +24,17 @@ export function startArena(payload) {
   });
 }
 
+export function startCustomArena(payload) {
+  return jsonFetch("/api/arena/custom", {
+    method: "POST",
+    body: JSON.stringify(payload)
+  });
+}
+
+export function fetchRun(runId) {
+  return jsonFetch(`/api/run/${runId}`);
+}
+
 export function health() {
   return jsonFetch("/health");
 }

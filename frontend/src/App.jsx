@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { health, listHypotheses, startArena } from "./api.js";
+import { CustomBuilder } from "./CustomBuilder.jsx";
 
 function StatCard({ label, value, note }) {
   return (
@@ -157,6 +158,13 @@ export default function App() {
     link.click();
   };
 
+  const onShare = () => {
+    if (!result?.runId) return;
+    const url = `${window.location.origin}/api/run/${result.runId}`;
+    navigator.clipboard.writeText(url).catch(() => {});
+    alert("Run link copied to clipboard");
+  };
+
   return (
     <div className="page">
       <header className="hero">
@@ -190,6 +198,9 @@ export default function App() {
           </button>
           <button className="ghost" onClick={download} disabled={!result}>
             Export JSON
+          </button>
+          <button className="ghost" onClick={onShare} disabled={!result?.runId}>
+            Share run link
           </button>
         </div>
       </header>
@@ -232,12 +243,19 @@ export default function App() {
         </section>
       ) : null}
 
+      <CustomBuilder onRunComplete={setResult} />
+
       <section className="panel">
         <h2>Arena Results</h2>
         {result?.error && <div className="error">Error: {result.error}</div>}
         {result && !result.error ? (
           <>
             <Timeline ledger={result.ledger} roundsHint={result.metrics?.rounds || rounds} />
+            {result.summary?.text ? (
+              <div className="summary">
+                <strong>Auto Report:</strong> {result.summary.text}
+              </div>
+            ) : null}
             <div className="metrics">
               <StatCard label="Seed" value={result.seed} />
               <StatCard label="Txs" value={result.metrics.totalTx} />

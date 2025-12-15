@@ -51,6 +51,22 @@ If backend URL differs, set `VITE_API_BASE` in `frontend/.env` (e.g., `http://lo
 6) Cartel Formation — price hike sparks side-deals mid-run.  
 7) Free-Rider Penalty — early free access ends; strict x402 widens earnings gap.
 
+## What We Are Building (and What’s Simulated)
+- Deterministic agent behavior  
+- Real budget depletion  
+- Mandatory payments via x402 logic  
+- Replayable runs with identical outcomes  
+- Observable emergent effects (collusion, failure, alliances)
+
+Simulated on purpose:
+1. Payment settlement (mock txSig instead of real USDC)  
+2. “Intelligence” level (heuristics instead of expensive LLM calls)  
+3. Market environment (toy world, not live markets)
+
+Why this matters for builders/researchers:
+- The question isn’t “Is the agent smart?” but “What happens when agents must pay each other under constraints?”  
+- Our answers: Does paying improve outcomes? ✅ Do agents stop cooperating when broke? ✅ Does cheap info create collusion? ✅ Can alliances emerge without hardcoding? ✅ That’s behavioral evidence, not narrative.
+
 ## Current Mock vs Real Gaps
 - Payments/Tx: Mock txSig + explorer URL; no real SPL transfer yet (`backend/src/x402.js`).  
 - Wallets/Funding: Synthetic wallet strings; balances are in-memory.  
