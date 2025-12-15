@@ -32,11 +32,16 @@ npm run dev   # Vite prints http://localhost:5173
 If backend URL differs, set `VITE_API_BASE` in `frontend/.env` (e.g., `http://localhost:8080`).
 
 ## Deploy (Fast, Free)
-- Frontend: `cd frontend && npm run build` then deploy `frontend/dist` to Vercel/Netlify.
+- Frontend: `cd frontend && npm run build` then deploy `frontend/dist` to Vercel/Netlify. Set `VITE_API_BASE=https://swarmforge-agent-economies-on-x402-solana.onrender.com`.
 - Backend: Deploy `backend/` to Render.com/any Node host. Env:
   - `PORT` (default 8080)
   - `USE_MOCK_TX` (`true` keeps mock txSigs)
   - `SOLANA_RPC` (devnet URL when wiring real transfers)
+Current live backend: `https://swarmforge-agent-economies-on-x402-solana.onrender.com`
+
+## Live Links
+- Frontend: https://swarmforge-agent-economies-on-x402.vercel.app/
+- Backend: https://swarmforge-agent-economies-on-x402-solana.onrender.com
 
 ## API Quick Reference
 - `POST /api/arena/start` body: `{ hypId: number (1-7), seed?: number, rounds?: number, mockTx?: boolean }`
