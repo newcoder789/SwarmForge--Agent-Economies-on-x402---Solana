@@ -1,49 +1,82 @@
 # SwarmForge MVP (x402 + Solana Devnet)
 
-Quick-startable demo for the Encode x402 Winter Build Challenge. It simulates 3 deterministic agents (Oracle, Trader, Strategist) running 10-round arenas with mock or real-ready x402-style Solana payments. Frontend (Vite/React) shows hypotheses, live ledger, and metrics; backend (Express) runs the deterministic simulation and exposes a simple API.
+Browser arena where 3 deterministic agents (Oracle, Trader, Strategist) run 10-round simulations under seven pre-set hypotheses. Every interaction follows an x402-style payment flow (mocked by default; devnet-ready), producing a live ledger, metrics, and exportable JSON for replays. Built for Encode x Solana Winter Build Challenge (x402 track).
+
+## What This Project Shows
+- x402-native A2A payments: request → 402 invoice → pay (mock txSig) → fulfill.
+- Emergent agent behavior: paywalls, bribes/cartels, whistleblower chill.
+- Deterministic runs: seedable RNG; export JSON for replay/research.
+- Demo-ready UX: hypothesis buttons, round controls, timeline, ledger, metrics, export.
 
 ## Repo Layout
 - `backend/` – Express simulation API with x402 mock/ready flow.
-- `frontend/` – Vite + React SPA for arena runs, ledger, metrics.
+- `frontend/` – Vite + React SPA for arena runs, timeline, ledger, metrics.
 
 ## One-Time Setup
 ```bash
-cd backend
-npm install
-cd ../frontend
-npm install
+cd backend && npm install
+cd ../frontend && npm install
 ```
 
 ## Run Locally
 Backend:
 ```bash
 cd backend
-npm run dev
+npm run dev   # starts on :8080
 ```
-
-Frontend (in another shell):
+Frontend (new shell):
 ```bash
 cd frontend
-npm run dev
-# Vite will print a localhost URL
+npm run dev   # Vite prints http://localhost:5173
 ```
+If backend URL differs, set `VITE_API_BASE` in `frontend/.env` (e.g., `http://localhost:8080`).
 
 ## Deploy (Fast, Free)
-- Frontend: `cd frontend && npm run build` then deploy `dist/` to Vercel/Netlify.
-- Backend: Deploy `backend/` to Render.com (Node web service). Env vars:
-  - `PORT` (optional, default 8080)
-  - `USE_MOCK_TX` (`true` to keep mock txSigs)
-  - `SOLANA_RPC` (devnet URL if you wire real txs)
+- Frontend: `cd frontend && npm run build` then deploy `frontend/dist` to Vercel/Netlify.
+- Backend: Deploy `backend/` to Render.com/any Node host. Env:
+  - `PORT` (default 8080)
+  - `USE_MOCK_TX` (`true` keeps mock txSigs)
+  - `SOLANA_RPC` (devnet URL when wiring real transfers)
 
 ## API Quick Reference
 - `POST /api/arena/start` body: `{ hypId: number (1-7), seed?: number, rounds?: number, mockTx?: boolean }`
 - Response: `{ seed, config, ledger, metrics, balances }`
 
-## Hypotheses Included
-Seven pre-set hypes aligned to x402 track: alliance, collusion threshold, hallucination reduction, strategy fragility, whistleblower impact, cartel formation, free-rider penalty.
+## Hypotheses (7)
+1) Spontaneous Alliance — bribe budget drives Trader–Strategist partnerships.  
+2) Collusion Threshold — cheap Oracle data triggers private side-deals.  
+3) Hallucination Reduction — paid vs free data quality gap.  
+4) Strategy Fragility — aggressive Trader goes bankrupt under low budgets.  
+5) Whistleblower Impact — reveal event chills bribes post-round.  
+6) Cartel Formation — price hike sparks side-deals mid-run.  
+7) Free-Rider Penalty — early free access ends; strict x402 widens earnings gap.
 
-## Notes
-- Currently runs with mock Solana txs for speed; hooks are in place to drop in real devnet transfers (`x402.js`).
-- Deterministic via seeded RNG for replays/exports.
+## Current Mock vs Real Gaps
+- Payments/Tx: Mock txSig + explorer URL; no real SPL transfer yet (`backend/src/x402.js`).  
+- Wallets/Funding: Synthetic wallet strings; balances are in-memory.  
+- 402 Handshake: Paywall toggle but not a true HTTP 402 retry flow.  
+- Latency/Finality: Instant in sim; no measured settle times.
+
+## Submission Checklist (hackathon)
+- Public GitHub repo with this README, code, configs, and mock tx logs (export JSON from UI).  
+- 2–3 min video: “Pick Hyp1 → watch bribe round ~4 → click tx link → export metrics.”  
+- Devpost/Encode form: project name, x402 track, repo link, video, team, Solana wallet.  
+- Live deploy (nice-to-have): Vercel frontend + Render backend with mock txs.  
+- License + contact (optional bonus).
+
+## What the UI Delivers
+- Hypothesis grid + config preview.  
+- Controls: mock toggle, rounds input, start run, export JSON.  
+- Timeline: per-round event chips (payments, bribes, reveals).  
+- Ledger: round-by-round transfers with txSig links.  
+- Metrics: tx counts, collusion ratio, bribes, bankrupt rate.  
+- Balances: per-agent USDC view.
+
+## What to Do Next (if time)
+- Wire @solana/web3.js SPL USDC transfers on devnet; verify via `getTransaction`.  
+- Real agent keypairs + faucets; reconcile on-chain balances.  
+- Implement HTTP 402 handshake endpoints per agent.  
+- Record settle latency and include in metrics.
+
 
 

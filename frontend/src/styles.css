@@ -213,6 +213,42 @@ h3 {
   background: #0f131d;
 }
 
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.tick {
+  padding: 10px;
+  border: 1px solid #1f2430;
+  border-radius: 10px;
+  background: #0f131d;
+}
+
+.tick-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.tag-row {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  padding: 3px 8px;
+  border-radius: 999px;
+  border: 1px solid #1f2430;
+  background: #132033;
+  color: #c1d7ff;
+  font-size: 12px;
+}
+
 .balances {
   display: flex;
   gap: 12px;

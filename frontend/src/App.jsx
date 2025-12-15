@@ -45,6 +45,32 @@ function LedgerTable({ ledger }) {
   );
 }
 
+function Timeline({ ledger, roundsHint }) {
+  if (!ledger?.length) return <div className="muted">Run a hypothesis to populate the timeline.</div>;
+  const maxRound =
+    roundsHint || Math.max(...ledger.map((e) => e.round || 0), 0) || 0;
+  const rounds = Array.from({ length: maxRound }, (_, i) => i + 1);
+  return (
+    <div className="timeline">
+      {rounds.map((r) => {
+        const events = ledger.filter((e) => e.round === r);
+        const tags = Array.from(new Set(events.map((e) => e.kind)));
+        return (
+          <div className="tick" key={r}>
+            <div className="tick-head">
+              <span className="pill">Round {r}</span>
+              <span className="muted small">{events.length} ev</span>
+            </div>
+            <div className="tag-row">
+              {tags.length ? tags.map((t) => <span key={t} className="tag">{t}</span>) : <span className="muted small">—</span>}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 export default function App() {
   const [status, setStatus] = useState("Connecting...");
   const [hypotheses, setHypotheses] = useState([]);
@@ -171,6 +197,7 @@ export default function App() {
         {result?.error && <div className="error">Error: {result.error}</div>}
         {result && !result.error ? (
           <>
+            <Timeline ledger={result.ledger} roundsHint={result.metrics?.rounds || rounds} />
             <div className="metrics">
               <StatCard label="Seed" value={result.seed} />
               <StatCard label="Txs" value={result.metrics.totalTx} />
