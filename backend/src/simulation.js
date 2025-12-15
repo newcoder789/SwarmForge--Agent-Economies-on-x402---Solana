@@ -4,6 +4,25 @@ import { processPayment } from "./x402.js";
 import { computeMetrics } from "./metrics.js";
 import { getHypothesisById } from "./hypotheses.js";
 
+function commentForPayment({ from, to, amount, freeWindow }) {
+  if (freeWindow) {
+    return `${from.name}: taking free data window before strict x402.`;
+  }
+  return `${from.name}: paying ${amount} USDC to ${to.name} for data.`;
+}
+
+function commentForBribe({ strategist, trader, amount }) {
+  return `${strategist.name}: side-paying ${trader.name} (${amount} USDC) to favor my signals.`;
+}
+
+function commentForReveal() {
+  return "Auditor: whistleblower exposes side-payments; expect chilled bribes.";
+}
+
+function commentForSkip({ from }) {
+  return `${from.name}: cannot pay now (budget exhausted).`;
+}
+
 function maybePayForData({ from, to, config, round, useMock, rng, ledger }) {
   const freeWindow = !config.paywallStrict && round <= 2;
   const amount = freeWindow ? 0 : config.price;
@@ -15,7 +34,8 @@ function maybePayForData({ from, to, config, round, useMock, rng, ledger }) {
       to: to.id,
       amount,
       public: true,
-      summary: "Free access before strict x402 kicks in"
+      summary: "Free access before strict x402 kicks in",
+      comment: commentForPayment({ from, to, amount, freeWindow: true })
     });
     return;
   }
@@ -28,7 +48,8 @@ function maybePayForData({ from, to, config, round, useMock, rng, ledger }) {
       to: to.id,
       amount: 0,
       public: true,
-      summary: "Insufficient balance"
+      summary: "Insufficient balance",
+      comment: commentForSkip({ from })
     });
     return;
   }
@@ -44,7 +65,8 @@ function maybePayForData({ from, to, config, round, useMock, rng, ledger }) {
       txSig: tx.txSig,
       explorer: tx.explorer,
       public: true,
-      summary: "Paid data via x402"
+      summary: "Paid data via x402",
+      comment: commentForPayment({ from, to, amount: payable, freeWindow: false })
     });
   });
 }
@@ -68,7 +90,8 @@ function maybeBribe({ strategist, trader, config, round, useMock, rng, ledger })
       txSig: tx.txSig,
       explorer: tx.explorer,
       public: false,
-      summary: "Side deal to secure future data sharing"
+      summary: "Side deal to secure future data sharing",
+      comment: commentForBribe({ strategist, trader, amount })
     });
   });
 }
@@ -83,7 +106,8 @@ function maybeWhistleblow({ config, round, ledger }) {
     to: "public",
     amount: 0,
     public: true,
-    summary: "Whistleblower exposes bribes; chill expected"
+    summary: "Whistleblower exposes bribes; chill expected",
+    comment: commentForReveal()
   });
 }
 

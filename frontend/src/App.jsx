@@ -21,6 +21,7 @@ function LedgerTable({ ledger }) {
         <span>From → To</span>
         <span>Amount</span>
         <span>Tx</span>
+        <span>Thought</span>
       </div>
       {ledger.map((e, idx) => (
         <div className="table-row" key={`${e.round}-${idx}`}>
@@ -39,8 +40,47 @@ function LedgerTable({ ledger }) {
               e.summary || "—"
             )}
           </span>
+          <span className="muted small">{e.comment || "—"}</span>
         </div>
       ))}
+    </div>
+  );
+}
+
+function AgentThoughts({ ledger }) {
+  if (!ledger?.length) return null;
+  const byAgent = ledger.reduce((acc, e) => {
+    if (!e.comment) return acc;
+    const pushTo = (id) => {
+      acc[id] = acc[id] || [];
+      acc[id].push({ round: e.round, comment: e.comment });
+    };
+    if (e.from) pushTo(e.from);
+    if (e.to) pushTo(e.to);
+    return acc;
+  }, {});
+  const agents = Object.keys(byAgent);
+  if (!agents.length) return null;
+  return (
+    <div className="thoughts">
+      {agents.map((id) => {
+        const last = byAgent[id].slice(-3);
+        return (
+          <div key={id} className="thought-card">
+            <div className="thought-head">
+              <span className="pill">{id}</span>
+              <span className="muted small">Latest thoughts</span>
+            </div>
+            <ul>
+              {last.map((item, i) => (
+                <li key={`${id}-${i}`}>
+                  <span className="pill subtle">R{item.round}</span> {item.comment}
+                </li>
+              ))}
+            </ul>
+          </div>
+        );
+      })}
     </div>
   );
 }
@@ -205,6 +245,7 @@ export default function App() {
               <StatCard label="Bribes" value={result.metrics.bribeCount} />
               <StatCard label="Bankrupt rate" value={result.metrics.bankruptRate} />
             </div>
+            <AgentThoughts ledger={result.ledger} />
             <div className="balances">
               {Object.entries(result.balances || {}).map(([id, bal]) => (
                 <div key={id} className="balance">

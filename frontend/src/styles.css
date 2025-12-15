@@ -199,7 +199,7 @@ h3 {
 .table-head,
 .table-row {
   display: grid;
-  grid-template-columns: 70px 120px 1.2fr 120px 1fr;
+  grid-template-columns: 70px 110px 1fr 110px 1fr 1.2fr;
   gap: 8px;
   padding: 10px 12px;
 }
@@ -211,6 +211,46 @@ h3 {
 
 .table-row:nth-child(odd) {
   background: #0f131d;
+}
+
+.thoughts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 10px;
+  margin: 12px 0 6px;
+}
+
+.thought-card {
+  padding: 12px;
+  border: 1px solid #1f2430;
+  border-radius: 10px;
+  background: #0f131d;
+}
+
+.thought-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.thought-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.thought-card li {
+  font-size: 13px;
+  color: #d8e2ff;
+}
+
+.pill.subtle {
+  background: #182034;
+  color: #9fb8ff;
 }
 
 .timeline {
@@ -284,7 +324,7 @@ h3 {
   }
   .table-head,
   .table-row {
-    grid-template-columns: 60px 100px 1fr 100px 1fr;
+    grid-template-columns: 60px 90px 1fr 90px 1fr 1fr;
   }
 }
 
