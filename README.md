@@ -88,11 +88,10 @@ Why this matters for builders/researchers:
 - Metrics: tx counts, collusion ratio, bribes, bankrupt rate.  
 - Balances: per-agent USDC view.
 
-## What to Do Next (if time)
-- Wire @solana/web3.js SPL USDC transfers on devnet; verify via `getTransaction`.  
-- Real agent keypairs + faucets; reconcile on-chain balances.  
-- Implement HTTP 402 handshake endpoints per agent.  
-- Record settle latency and include in metrics.
-
-
-
+## How to use it
+- Standard hypotheses: unchanged – pick a predefined hypothesis and click Start Arena.
+- Custom builder:
+  - Use JSON or Visual Form; click Sync to keep them aligned.
+  - Click Validate JSON to run ajv schema check (pill shows result).
+  - Click Use Template to reset to a sane baseline.
+  - Click Run Custom / Run Hypothesis to fire a staged run and then see the full results below (timeline, auto report, metrics, thoughts, ledger, exports) as before, plus the live playback count in the builder.

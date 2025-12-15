@@ -1,6 +1,7 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { health, listHypotheses, startArena } from "./api.js";
 import { CustomBuilder } from "./CustomBuilder.jsx";
+import { typewriter } from "./typewriter.js";
 
 function StatCard({ label, value, note }) {
   return (
@@ -48,6 +49,20 @@ function LedgerTable({ ledger }) {
   );
 }
 
+function ThoughtLine({ round, comment }) {
+  const ref = useRef(null);
+  useEffect(() => {
+    if (!ref.current || !comment) return undefined;
+    const id = typewriter(ref.current, comment, 25);
+    return () => clearInterval(id);
+  }, [comment]);
+  return (
+    <li>
+      <span className="pill subtle">R{round}</span> <span ref={ref} />
+    </li>
+  );
+}
+
 function AgentThoughts({ ledger }) {
   if (!ledger?.length) return null;
   const byAgent = ledger.reduce((acc, e) => {
@@ -74,9 +89,7 @@ function AgentThoughts({ ledger }) {
             </div>
             <ul>
               {last.map((item, i) => (
-                <li key={`${id}-${i}`}>
-                  <span className="pill subtle">R{item.round}</span> {item.comment}
-                </li>
+                <ThoughtLine key={`${id}-${i}`} round={item.round} comment={item.comment} />
               ))}
             </ul>
           </div>
